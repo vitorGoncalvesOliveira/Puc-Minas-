@@ -1,0 +1,36 @@
+<!--
+  Generated template for the TarefasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>tarefas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let t of tarefas"
+      (click)="selecionaTarefa(t.codigo)">
+    <h2>{{ t.descricao }}</h2>
+    <h3>{{ nomeProjeto(t.projeto)}}  ({{ t.projeto }}) </h3>
+    <p>{{ t.data | date:'dd/MM/yyyy'}}</p>
+    <ion-badge item-right
+    [class.alta]="t.prioridade == 1"
+    [class.media]="t.prioridade == 2"
+    [class.baixa]="t.prioridade == 3">{{ t.prioridade }}</ion-badge>
+    </button>
+  </ion-list>
+
+  <div id="mais">
+    <button ion-button color="primary" (click)="novaTarefa()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>

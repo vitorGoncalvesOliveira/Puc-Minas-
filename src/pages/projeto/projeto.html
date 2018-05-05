@@ -1,0 +1,48 @@
+<!--
+  Generated template for the ProjetoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>projeto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item>
+    <ion-label color="primary">Nome:</ion-label>
+    <ion-input type="text" placeholder="Nome do projeto"
+    [(ngModel)]="nomeProjeto" name="nomeProjeto"
+    required #nome="ngModel"></ion-input>
+  </ion-item>
+</ion-list>
+
+<ion-card>
+  <ion-card-content class="alerta" *ngIf="!nome.valid && nome.dirty">
+    Informe um nome para o projeto
+  </ion-card-content>
+</ion-card>
+
+<div id="mais">
+    <button ion-button color="primary" (click)="incluir()" 
+    [disabled]='!nome.valid' [class.invisivel]="!novo">
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+
+  <button ion-button color="primary" (click)="alterar()" 
+  [disabled]='!nome.valid' [class.invisivel]="novo">
+    <ion-icon name="checkmark" ></ion-icon>
+  </button>
+
+  <button ion-button color="danger" (click)="excluir()" [class.invisivel]="novo">
+    <ion-icon name="trash"></ion-icon>
+  </button>
+</div>
+
+</ion-content>
