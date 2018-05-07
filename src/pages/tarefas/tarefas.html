@@ -7,15 +7,44 @@
 <ion-header>
 
   <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
     <ion-title>tarefas</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-menu [content]="menucontent">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Filtos</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-item-group>
+          <button ion-item (click)="limparFiltros()">Todas</button>
+          <button ion-item (click)="filtrosDias(0)">Até hoje</button>
+          <button ion-item (click)="filtrosDias(1)">Até amanhã</button>
+          <button ion-item (click)="filtrosDias(7)">Até a próxima semana</button>
+        </ion-item-group>
+
+        <ion-item-group>
+          <ion-item-divider class="light">Por projeto </ion-item-divider>
+          <button ion-item *ngFor="let p of projetos"
+            (click)="filtroProjeto(p.codigo)"> {{p.nome}} </button>
+        </ion-item-group>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav id="nav" #menucontent [root]="rootPage"></ion-nav>
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let t of tarefas"
+    <button ion-item *ngFor="let t of tarefas | filtro: filtroTarefas"
       (click)="selecionaTarefa(t.codigo)">
     <h2>{{ t.descricao }}</h2>
     <h3>{{ nomeProjeto(t.projeto)}}  ({{ t.projeto }}) </h3>

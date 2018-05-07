@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { TarefaPage } from '../pages/tarefa/tarefa';
-import { TarefasPage } from '../pages/tarefas/tarefas';
+import { TarefasPage, Filtro } from '../pages/tarefas/tarefas';
 import { ProjetosPage }  from '../pages/projetos/projetos'
 import { ProjetoPage }  from '../pages/projeto/projeto'
 import { TabsPage } from '../pages/tabs/tabs';
@@ -21,6 +21,7 @@ import { TarefasServiceProvider } from '../providers/tarefas-service/tarefas-ser
     ProjetoPage,
     TarefasPage,
     TarefaPage,
+    Filtro,
     TabsPage
   ],
   imports: [
@@ -33,7 +34,7 @@ import { TarefasServiceProvider } from '../providers/tarefas-service/tarefas-ser
     ProjetosPage,
     ProjetoPage,
     TarefasPage,
-    TarefaPage,
+    TarefaPage,    
     TabsPage
   ],
   providers: [
