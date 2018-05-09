@@ -20,6 +20,7 @@ export class TarefaPage {
   descricao: string;
   prioridade: number;
   data: string;
+  done: boolean;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -44,6 +45,7 @@ export class TarefaPage {
               this.data = d.getFullYear() +"-"+
               ("0"+(d.getMonth()+1)).substr(-2,2)+"-"+
               ("0"+ d.getDate()).substr(-2,2);
+              this.done = tarefas[i].done;
               
               
             break;
@@ -55,6 +57,7 @@ export class TarefaPage {
         this.codigoProjeto = 1;
         this.descricao = '';
         this.prioridade = 3;
+        this.done = false;
 
         let d = new Date();
         this.data = d.getFullYear() +"-"+

@@ -64,6 +64,20 @@ export class TarefasPage {
     this.menuController.close();
 
   }
+  filtroConcluidas(){
+    this.filtroTarefas = { feito: true};
+    this.menuController.close();
+  }
+
+  filtroIncompletas(){
+    this.filtroTarefas = { incompleta: true};
+    this.menuController.close();
+  }
+
+  updateTarefa( c, done ){
+    let t: number = parseInt(c);
+    this.tarefasService.setTarefaConcluida(t, done)
+  }
 
 }
 
@@ -78,6 +92,7 @@ export class Filtro implements PipeTransform {
     itens.sort(
       ( a , b ) => a.data - b.data
     );
+    
 
     if(filtro.projeto >= 0){
       return itens.filter( item => item.projeto == filtro.projeto);      
@@ -88,6 +103,12 @@ export class Filtro implements PipeTransform {
       return itens.filter(
         item => item.data <= d
       );
+    }
+    else if( filtro.feito){
+      return itens.filter( item => item.done );
+    }
+    else if( filtro.incompleta){
+      return itens.filter( item => !item.done);
     }
     else
       return itens;

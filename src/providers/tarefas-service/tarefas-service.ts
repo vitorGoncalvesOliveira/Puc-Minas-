@@ -7,16 +7,16 @@ export class TarefasServiceProvider {
 
   tarefas =[
     {codigo: 1, projeto: 1, descricao: 'Realizar primeira prova',
-    data: new Date(2018, 4, 13), prioridade: 1},
+    data: new Date(2018, 4, 13), done:false ,prioridade: 1},
 
     {codigo: 2, projeto: 1, descricao: 'Somar notas',
-    data: new Date(2018, 4, 8), prioridade: 2},
+    data: new Date(2018, 4, 8), done:false, prioridade: 2},
 
     {codigo: 3, projeto: 2 , descricao: 'Realizar exercicício EAD',
-    data: new Date(2018, 4, 10), prioridade: 1},
+    data: new Date(2018, 4, 10), done:false, prioridade: 1},
 
     {codigo: 4, projeto: 3 , descricao: 'Aqui é só pra perder peso',
-    data: new Date(2018, 4, 7), prioridade: 3},
+    data: new Date(2018, 4, 7), done:true, prioridade: 3},
   ];
   
   ultimoCodigo = 4;
@@ -53,7 +53,8 @@ export class TarefasServiceProvider {
       projeto: cProjeto,
       descricao: desc,
       data:d,
-      prioridade:prio
+      prioridade:prio,
+      done: false
     })
   }
   deleteTarefa(c){
@@ -63,6 +64,18 @@ export class TarefasServiceProvider {
         this.tarefas.splice(i,1);
         break;
       }
+    }
+
+  }
+  setTarefaConcluida(c, concluida){
+    for( let i = 0; i < this.tarefas.length ; i++) {
+      
+      if( this.tarefas[i].codigo == c ){
+          this.tarefas[i].done = concluida;   
+        break;
+      }
+      
+
     }
 
   }
