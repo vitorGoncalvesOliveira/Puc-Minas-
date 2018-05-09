@@ -7,15 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button menuToggle>
+      <button ion-button menuToggle >
           <ion-icon name="menu"></ion-icon>
-        </button>
+      </button>
     <ion-title>tarefas</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-menu [content]="menucontent">
+<ion-menu type="overlay" [content]="menucontent">
     <ion-header>
       <ion-toolbar>
         <ion-title>Filtos</ion-title>
@@ -42,7 +42,7 @@
     </ion-content>
   </ion-menu>
   
-  <ion-nav id="nav" #menucontent [root]="rootPage"></ion-nav>
+  <ion-nav id="nav" [root]="rootPage" #menucontent></ion-nav>
 
 <ion-content padding>
   <ion-list>
