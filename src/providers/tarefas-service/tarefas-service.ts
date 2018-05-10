@@ -15,7 +15,7 @@ export class TarefasServiceProvider {
     {codigo: 3, projeto: 2 , descricao: 'Realizar exercicício EAD',
     data: new Date(2018, 4, 10), done:false, prioridade: 1},
 
-    {codigo: 4, projeto: 3 , descricao: 'Aqui é só pra perder peso',
+    {codigo: 4, projeto: 3 , descricao: 'Formar !',
     data: new Date(2018, 4, 7), done:true, prioridade: 3},
   ];
   

@@ -12,6 +12,7 @@ export class GrupoServiceProvider {
     {nome: "Augusto Moreira" , img:"../../assets/imgs/augusto.jpeg"},
     {nome: "Luccas Fernandes" , img:"../../assets/imgs/luccas.jpeg"},
     {nome: "Luiz Gonzaga" , img:"../../assets/imgs/gonzaga.jpeg"},
+    {nome: "Nayara Alves" , img:"../../assets/imgs/Naiara.jpeg"},
     {nome: "Vitor Gonçalves" , img:"../../assets/imgs/vitor.png"}
   ];
 

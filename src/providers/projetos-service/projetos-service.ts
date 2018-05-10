@@ -12,7 +12,7 @@ export class ProjetosServiceProvider {
 
   projetos = [
     { codigo: 1, nome: 'Algoritmos' },
-    { codigo: 2, nome: 'Emagrecer' },
+    { codigo: 2, nome: 'EAD' },
     { codigo: 3, nome: 'TCC' }
   ];
 
