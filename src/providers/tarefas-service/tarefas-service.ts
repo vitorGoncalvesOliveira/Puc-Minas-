@@ -7,7 +7,7 @@ export class TarefasServiceProvider {
 
   tarefas =[
     {codigo: 1, projeto: 1, descricao: 'Realizar primeira prova',
-    data: new Date(2018, 4, 13), done:false ,prioridade: 1},
+    data: new Date(2018, 4, 13), done:true ,prioridade: 1},
 
     {codigo: 2, projeto: 1, descricao: 'Somar notas',
     data: new Date(2018, 4, 8), done:false, prioridade: 2},
@@ -16,7 +16,7 @@ export class TarefasServiceProvider {
     data: new Date(2018, 4, 10), done:false, prioridade: 1},
 
     {codigo: 4, projeto: 3 , descricao: 'Formar !',
-    data: new Date(2018, 4, 7), done:true, prioridade: 3},
+    data: new Date(2018, 4, 7), done:false, prioridade: 3},
   ];
   
   ultimoCodigo = 4;
