@@ -27,34 +27,33 @@ export class TarefaPage {
               public tarefaService: TarefasServiceProvider,
               public projetoService: ProjetosServiceProvider) {
             
-      this.projetos = this.projetoService.getProjetos()
+      
+
       this.novo = this.navParams.get('novo');
-      let codigo = this.navParams.get('codigo');
-      let tarefas = this.tarefaService.getTarefas();
+      this.codigoTarefa = this.navParams.get('codigo');
+      // let tarefas = this.tarefaService.getTarefas();
       
       if(!this.novo){
-       
-
-        for(let i = 0; i < tarefas.length; i++){
-          if(codigo == tarefas[i].codigo){
-            this.codigoTarefa = tarefas[i].codigo;
-              this.codigoProjeto = tarefas[i].projeto;
-              this.descricao = tarefas[i].descricao;
-              this.prioridade = tarefas[i].prioridade;
-              let d = tarefas[i].data;
-              this.data = d.getFullYear() +"-"+
-              ("0"+(d.getMonth()+1)).substr(-2,2)+"-"+
-              ("0"+ d.getDate()).substr(-2,2);
-              this.done = tarefas[i].done;
-              
-              
-            break;
-          }
-        }
-
+         this.tarefaService.getTarefa( this.codigoTarefa).
+          then(tarefa =>{
+                     
+                this.codigoTarefa = tarefa.codigo;
+                this.codigoProjeto = tarefa.projeto;
+                this.descricao = tarefa.descricao;
+                this.prioridade = tarefa.prioridade;
+                let d = tarefa.data;
+                this.data = d.getFullYear() +"-"+
+                ("0"+(d.getMonth()+1)).substr(-2,2)+"-"+
+                ("0"+ d.getDate()).substr(-2,2);
+                this.done = false;        
+          
+        })
       }
-      else{
-        this.codigoProjeto = 1;
+
+      this.projetoService.getProjetos().then( dados =>{
+        this.projetos = dados;
+        if(this.novo){
+          this.codigoProjeto = 1;
         this.descricao = '';
         this.prioridade = 3;
         this.done = false;
@@ -63,14 +62,17 @@ export class TarefaPage {
         this.data = d.getFullYear() +"-"+
                     ("0"+(d.getMonth()+1)).substr(-2,2)+"-"+
                     ("0"+ d.getDate()).substr(-2,2);
-      }
+  
+        }
+      });
+
   }
 
 
   alterar(){
     let d = new Date(
       parseInt(this.data.substr(0,4)),
-      parseInt(this.data.substr(5,2)),
+      parseInt(this.data.substr(5,2)) -1,
       parseInt(this.data.substr(8,2)) );
     
     this.tarefaService.editTarefa( 
@@ -78,21 +80,26 @@ export class TarefaPage {
       this.codigoProjeto,
       this.descricao,
       this.prioridade,
-      d);
+      d).then(dados =>{
+        this.navCtrl.pop();
+      });
 
-    this.navCtrl.pop();
+  
   }
   excluir(){
 
-    this.tarefaService.deleteTarefa( this.codigoTarefa );
-    this.navCtrl.pop();
+    this.tarefaService.deleteTarefa( this.codigoTarefa )
+    .then(dados =>{
+      this.navCtrl.pop();
+    });
+    
   }
 
   incluir(){
     
     let d = new Date(
       parseInt(this.data.substr(0,4)),
-      parseInt(this.data.substr(5,2)),
+      parseInt(this.data.substr(5,2)) - 1,
       parseInt(this.data.substr(8,2)) );
     
 
@@ -101,8 +108,10 @@ export class TarefaPage {
       this.descricao,
       this.prioridade,
       d
-    );
-    this.navCtrl.pop();
+    ).then(dados =>{
+      this.navCtrl.pop();
+    });
+    
   }
   
 

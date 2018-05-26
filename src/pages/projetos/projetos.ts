@@ -23,10 +23,14 @@ export class ProjetosPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public projetos : ProjetosServiceProvider ) {
-
-      this.project = projetos.getProjetos();
+      
   }
 
+  ionViewDidEnter(){
+    this.projetos.getProjetos().then(dados =>{
+      this.project = dados;
+    })
+  }
   
   selecionaProjeto( c ){
     

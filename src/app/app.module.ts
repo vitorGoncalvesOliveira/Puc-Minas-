@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { HttpModule } from '@angular/http';
+
 import { TarefaPage } from '../pages/tarefa/tarefa';
 import { TarefasPage, Filtro } from '../pages/tarefas/tarefas';
 import { ProjetosPage }  from '../pages/projetos/projetos';
@@ -30,6 +32,7 @@ import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

@@ -11,7 +11,7 @@ import { TarefaPage } from '../../pages/tarefa/tarefa';
 })
 export class TarefasPage {
 
-  tarefas: any[];
+  tarefas: any[] = [];
   projetos: any[];
   filtroTarefas = {};
 
@@ -21,10 +21,20 @@ export class TarefasPage {
     public projetoService: ProjetosServiceProvider,
     public menuController: MenuController) {
 
-      this.projetos = projetoService.getProjetos();
-      this.tarefas = tarefasService.getTarefas();
 
+      
   }
+
+  ionViewDidEnter(){
+     this.projetoService.getProjetos().then(result=>{
+      this.projetos = result;
+    });
+    this.tarefasService.getTarefas()
+        .then(tarefas =>{
+          this.tarefas = tarefas;
+        })
+
+  }  
 
   nomeProjeto(c) : string{
 

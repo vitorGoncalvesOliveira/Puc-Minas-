@@ -27,30 +27,35 @@ export class ProjetoPage {
     this.novo = this.navParams.get('novo');
 
     if( !this.novo ){
-        let projetos = projetoService.getProjetos();
+        this.projetoService.getProjeto(this.codigo).then(dados =>{
+          this.nomeProjeto = dados.nome;
+          this.codigo = dados.codigo;
+    })
         
-        for( let i = 0; i <= projetos.length; i++){
-          if( this.codigo == projetos[i].codigo ){
-            this.nomeProjeto = projetos[i].nome;
-            break;
-          }
-        }
+        
     }
   }
 
   alterar(){
-    this.projetoService.editProjeto( this.codigo, this.nomeProjeto );
-    this.navCtrl.pop();
+    this.projetoService.editProjeto( this.codigo, this.nomeProjeto )
+      .then( dados =>{
+        this.navCtrl.pop();
+      });    
   }
+
   excluir(){
 
-    this.projetoService.deleteProjeto( this.codigo );
-    this.navCtrl.pop();
+    this.projetoService.deleteProjeto( this.codigo )
+      .then( dados =>{
+        this.navCtrl.pop();
+      });    
   }
 
   incluir(){
-    this.projetoService.addProjeto( this.nomeProjeto );
-    this.navCtrl.pop();
+    this.projetoService.addProjeto( this.nomeProjeto )
+      .then( dados =>{
+        this.navCtrl.pop();
+      });    
   }
 
 
