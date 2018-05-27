@@ -4,6 +4,7 @@ import { GrupoServiceProvider } from '../../providers/grupo-service/grupo-servic
 
 import { Camera, CameraOptions } from '@ionic-native/camera' 
 
+
 @IonicPage()
 @Component({
   selector: 'page-grupo',
