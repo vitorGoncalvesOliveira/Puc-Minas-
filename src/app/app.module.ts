@@ -19,6 +19,8 @@ import { ProjetosServiceProvider } from '../providers/projetos-service/projetos-
 import { TarefasServiceProvider } from '../providers/tarefas-service/tarefas-service';
 import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
 
+import { Camera } from '@ionic-native/camera';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,7 +43,7 @@ import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
     ProjetosPage,
     ProjetoPage,
     TarefasPage,
-    TarefaPage,    
+    TarefaPage,
     GrupoPage,
     TabsPage
   ],
@@ -51,6 +53,7 @@ import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProjetosServiceProvider,
     TarefasServiceProvider,
+    Camera,
     GrupoServiceProvider
   ]
 })
